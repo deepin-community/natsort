@@ -1,15 +1,76 @@
-Source: template-repository
-Section: unknown
+Source: natsort
+Section: python
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders: Agustin Henze <tin@debian.org>,
+ Ulises Vitulli <dererk@debian.org>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ help2man,
+ locales-all <!nocheck>,
+ python3-all,
+ python3-hypothesis <!nocheck>,
+ python3-pytest <!nocheck>,
+ python3-pytest-mock <!nocheck>,
+ python3-setuptools,
+ python3-sphinx,
+Standards-Version: 4.5.1
+Homepage: https://github.com/SethMMorton/natsort
+Vcs-Git: https://salsa.debian.org/python-team/packages/natsort.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/natsort
+Rules-Requires-Root: no
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: python3-natsort
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Suggests: python-natsort-doc
+Description: Natural sorting for Python (Python3)
+ natsort lets you apply natural sorting to your sequences easily, for example:
+ .
+  >>> from natsort import natsorted
+  >>> a = ['a2', 'a9', 'a1', 'a4', 'a10']
+  >>> data = [['a1', 'a5'], ['a1', 'a40'], ['a10', 'a1'], ['a2', 'a5']]
+  >>> natsorted(a)
+  ['a1', 'a2', 'a4', 'a9', 'a10'
+  >>> natsorted(data)
+  [['a1', 'a5'], ['a1', 'a40'], ['a2', 'a5'], ['a10', 'a1']]
+ .
+ natsort identifies the numbers and sorts them separately from strings.
+ .
+ natsort comes with a shell script to use natural sorting in shell scripts. You
+ can also execute natsort from the command line with Python -m natsort.
+ .
+ There exists another natural sorting package for Python called
+ python-naturalsort. You may prefer that package if you wish to only sort
+ version numbers.
+ .
+ This is the Python 3 version of the package.
+
+Package: python-natsort-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${misc:Depends}, ${sphinxdoc:Depends}, libjs-mathjax
+Recommends: python3-natsort
+Description: Natural sorting for Python (doc)
+ natsort lets you apply natural sorting to your sequences easily, for example:
+ .
+  >>> from natsort import natsorted
+  >>> a = ['a2', 'a9', 'a1', 'a4', 'a10']
+  >>> data = [['a1', 'a5'], ['a1', 'a40'], ['a10', 'a1'], ['a2', 'a5']]
+  >>> natsorted(a)
+  ['a1', 'a2', 'a4', 'a9', 'a10'
+  >>> natsorted(data)
+  [['a1', 'a5'], ['a1', 'a40'], ['a2', 'a5'], ['a10', 'a1']]
+ .
+ natsort identifies the numbers and sorts them separately from strings.
+ .
+ natsort comes with a shell script to use natural sorting in shell scripts. You
+ can also execute natsort from the command line with Python -m natsort.
+ .
+ There exists another natural sorting package for Python called
+ python-naturalsort. You may prefer that package if you wish to only sort
+ version numbers.
+ .
+ This package contains API documentation and examples.
